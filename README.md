@@ -21,18 +21,6 @@ O sistema funciona como um pipeline ETL (Extract, Transform, Load) simplificado 
 * **SDK Cloud:** `firebase-admin` (Gerenciamento de credenciais e ciclo de vida do app).
 * **Engine de Banco de Dados:** `google-cloud-firestore` (Persistência NoSQL nativa e mapeamento espacial por `GeoPoint`).
 
-## 📁 Arquitetura do Projeto
-O projeto é estruturado de forma modularizada em três blocos lógicos principais:
-
-### 1. Script Principal (`main.py`)
-Responsável por orquestrar o fluxo de dados, abrindo a planilha, iterando por suas linhas de forma linear e invocando os módulos de transformação e envio.
-
-### 2. Módulo de Transformação e Geocodificação (`transform.py`)
-Realiza a limpeza do CEP (removendo hifens e espaços) e consome os dados da API pública para retornar um par de floats formatados como latitude e longitude.
-
-### 3. Módulo de Conexão e Envio (`enviar.py`)
-Inicializa o SDK administrativo do Firebase utilizando chaves privadas criptografadas e envia os dicionários estruturados ao Firestore NoSQL.
-
 ## 📊 Diferenciais e Aprendizados
 
 * **Mapeamento Geoespacial Nativo:** O uso do `GeoPoint` permite que plataformas de mapas (como Leaflet, Google Maps API ou Mapbox) leiam diretamente os metadados salvos no Firestore, viabilizando consultas por raio de proximidade diretamente no banco de dados.
